@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://code.forgejo.org/forgejo-helm/forgejo-helm
-    path: /
+    # path: /
     targetRevision: main
     # targetRevision: 13.0.0
     # chart: forgejo
