@@ -9,8 +9,7 @@ spec:
     repoURL: https://code.forgejo.org/forgejo-helm/forgejo-helm
     # path: /
     targetRevision: main
-    # targetRevision: 13.0.0
-    # chart: forgejo
+    chart: forgejo
 
     # helm:
     #   releaseName: my-forgejo
