@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
-kind:       Application
+kind: Application
 metadata:
-  name:      argo-cd
+  name: argo-cd
   namespace: argo-cd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -10,12 +10,12 @@ spec:
   source:
     # repoURL: https://github.com/lunics/argo-cd.git
     repoURL: git@github.com:lunics/argo-cd.git
-    path:    argo-cd
+    path: argo-cd
     targetRevision: HEAD
   destination:
-    server:    https://kubernetes.default.svc
+    server: https://kubernetes.default.svc
     namespace: argo-cd
   syncPolicy:
     automated:
-      prune:    true
+      prune: true
       selfHeal: true
