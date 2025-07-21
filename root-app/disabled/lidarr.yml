@@ -1,0 +1,55 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: lidarr
+  namespace: argo-cd
+spec:
+  project: default
+  source:
+    repoURL: https://k8s-home-lab.github.io/helm-charts/
+    chart: lidarr
+    targetRevision: 15.1.1
+    # helm:
+    #   values: |
+    #     image:
+    #       repository: ghcr.io/k8s-at-home/lidarr
+    #       tag: latest
+
+    #     service:
+    #       type: ClusterIP
+    #       port: 8686
+
+    #     ingress:
+    #       enabled: true
+    #       hosts:
+    #         - host: lidarr.local
+    #           paths:
+    #             - /
+
+    #     persistence:
+    #       config:
+    #         enabled: true
+    #         mountPath: /config
+    #       media:
+    #         enabled: true
+    #         mountPath: /media
+    #         type: nfs
+    #         server: 192.168.1.10
+    #         path: /mnt/media/music
+
+    #     podSecurityContext:
+    #       fsGroup: 1000
+    #     securityContext:
+    #       runAsUser: 1000
+    #       runAsGroup: 1000
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: media
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+
