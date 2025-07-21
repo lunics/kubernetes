@@ -1,0 +1,27 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: argo-cd
+  labels:
+    zone: argo-cd
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: media
+  labels:
+    zone: media
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: gaming
+  labels:
+    zone: gaming
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: monitoring
+  labels:
+    zone: monitoring
