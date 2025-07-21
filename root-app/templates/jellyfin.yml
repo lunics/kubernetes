@@ -1,0 +1,59 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: jellyfin
+  namespace: argo-cd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/jellyfin/jellyfin-helm
+    path: charts/jellyfin
+    targetRevision: master
+    # helm:
+    #   values: |
+    #     image:
+    #       repository: jellyfin/jellyfin
+    #       tag: latest
+
+    #     service:
+    #       main:
+    #         type: ClusterIP
+    #         port: 8096
+
+    #     ingress:
+    #       main:
+    #         enabled: true
+    #         hosts:
+    #           - host: jellyfin.local
+    #             paths:
+    #               - path: /
+    #                 pathType: Prefix
+
+    #     persistence:
+    #       config:
+    #         enabled: true
+    #         mountPath: /config
+    #       media:
+    #         enabled: true
+    #         mountPath: /media
+    #         type: nfs
+    #         server: 192.168.1.100
+    #         path: /mnt/nfs/media
+
+    #     resources:
+    #       requests:
+    #         cpu: 100m
+    #         memory: 512Mi
+    #       limits:
+    #         cpu: 1000m
+    #         memory: 1500Mi
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: media
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+
