@@ -12,6 +12,10 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: harbor
+  helm:
+    values: |
+      expose:
+        type: nodePort
   syncPolicy:
     automated:
       prune: true
