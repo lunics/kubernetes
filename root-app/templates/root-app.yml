@@ -8,7 +8,6 @@ metadata:
 spec:
   project: default
   source:
-    # repoURL: https://github.com/lunics/argo-cd.git
     repoURL: git@github.com:lunics/argo-cd.git
     path: root-app
     targetRevision: HEAD
@@ -19,3 +18,5 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
