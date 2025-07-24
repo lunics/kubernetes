@@ -6,17 +6,20 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://charts.pree.dev
-    chart: radarr
+    repoURL:        https://charts.pree.dev
+    chart:          radarr
     targetRevision: 1.23.0
-    # helm:
-    #   values: |
+    helm:
+      values: |
+        ingress:
+          main:
+            enabled: true
+
     #     env	object	See below	environment variables.
     #     env.TZ	string	"UTC"	Set the container timezone
     #     image.pullPolicy	string	"IfNotPresent"	image pull policy
     #     image.repository	string	"ghcr.io/home-operations/radarr"	image repository
     #     image.tag	string	nil	
-    #     ingress.main	object	See values.yaml	Enable and configure ingress settings for the chart under this key.
     #     metrics.enabled	bool	See values.yaml	Enable and configure Exportarr sidecar and Prometheus serviceMonitor.
     #     metrics.exporter.env.additionalMetrics	bool	false	Set to true to enable gathering of additional metrics (slow)
     #     metrics.exporter.env.port	int	9794	metrics port
@@ -37,7 +40,7 @@ spec:
     namespace: media
   syncPolicy:
     automated:
-      prune: true
+      prune:    true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true

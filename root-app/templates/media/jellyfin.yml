@@ -9,17 +9,17 @@ spec:
     repoURL: https://github.com/jellyfin/jellyfin-helm
     path: charts/jellyfin
     targetRevision: master
-    helm:
-      values: |
-        ingress:
-          main:
-            className: nginx      # get with kubectl get ingressclass
-            enabled: true
-            hosts:
-              - host: jellyfin.hp-elitedesk-800g2
-                paths:
-                  - path: /
-                    pathType: Prefix
+    # helm:
+    #   values: |
+    #     ingress: # KO, doesn't create any ingress
+    #       main:
+    #         className: nginx      # get with kubectl get ingressclass
+    #         enabled: true
+    #         hosts:
+    #           - host: jellyfin.hp-elitedesk-800g2
+    #             paths:
+    #               - path: /
+    #                 pathType: Prefix
     #     image:
     #       repository: jellyfin/jellyfin
     #       tag: latest
