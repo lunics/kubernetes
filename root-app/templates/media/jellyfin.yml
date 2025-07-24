@@ -9,8 +9,17 @@ spec:
     repoURL: https://github.com/jellyfin/jellyfin-helm
     path: charts/jellyfin
     targetRevision: master
-    # helm:
-    #   values: |
+    helm:
+      values: |
+        ingress:
+          main:
+            className: nginx      # get with kubectl get ingressclass
+            enabled: true
+            hosts:
+              - host: jellyfin.hp-elitedesk-800g2
+                paths:
+                  - path: /
+                    pathType: Prefix
     #     image:
     #       repository: jellyfin/jellyfin
     #       tag: latest
@@ -19,15 +28,6 @@ spec:
     #       main:
     #         type: ClusterIP
     #         port: 8096
-
-    #     ingress:
-    #       main:
-    #         enabled: true
-    #         hosts:
-    #           - host: jellyfin.local
-    #             paths:
-    #               - path: /
-    #                 pathType: Prefix
 
     #     persistence:
     #       config:
