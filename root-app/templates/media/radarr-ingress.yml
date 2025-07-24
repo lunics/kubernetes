@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /     # fix error 404 http://hp-elitedesk-800g2/index-1726e9622bdfaf0ebb89.js
   labels:
     app.kubernetes.io/instance: radarr
     app.kubernetes.io/managed-by: Helm
