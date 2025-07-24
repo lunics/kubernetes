@@ -9,24 +9,24 @@ spec:
     repoURL:        https://charts.pree.dev
     chart:          radarr
     targetRevision: 1.23.0
-    helm:
-      values: |
-        ingress:
-          main:
-            enabled: true
-            http:
-              paths:
-                - path: /radarr
-                  pathType: Prefix
+    # helm:
+    #   values: |
+    #     ingress:
+    #       main:
+    #         enabled: true
+    #         http:
+    #           paths:
+    #             - path: /radarr
+    #               pathType: Prefix
 
 
-            # OK
-            # className: nginx
-            # hosts:
-            #   - host: radarr.hp-elitedesk-800g2
-            #     paths:
-            #       - path: /
-            #         pathType: Prefix
+    #         # OK
+    #         # className: nginx
+    #         # hosts:
+    #         #   - host: radarr.hp-elitedesk-800g2
+    #         #     paths:
+    #         #       - path: /
+    #         #         pathType: Prefix
 
     #     env	object	See below	environment variables.
     #     env.TZ	string	"UTC"	Set the container timezone
