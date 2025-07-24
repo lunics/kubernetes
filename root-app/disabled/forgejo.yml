@@ -6,12 +6,11 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://code.forgejo.org/forgejo-helm/forgejo-helm
+    repoURL: code.forgejo.org/forgejo-helm/forgejo-helm
     path: /
     targetRevision: main
     chart: forgejo
     targetRevision: 13.0.0
-
     # helm:
     #   releaseName: my-forgejo
     #   values: |

@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-jellyfin
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: jellyfin.hp-elitedesk-800g2
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: jellyfin
+          servicePort: 8096
