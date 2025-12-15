@@ -1,13 +1,15 @@
+kind:       Application
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+
 metadata:
-  name: sonarr
+  name:      sonarr
   namespace: argo-cd
+
 spec:
   project: default
   source:
-    repoURL: https://charts.pree.dev
-    chart: sonarr
+    repoURL:        https://charts.pree.dev
+    chart:          sonarr
     targetRevision: 1.11.0
     # helm:
     #   values: |
@@ -32,13 +34,14 @@ spec:
     #     persistence	object	See values.yaml	Configure persistence settings for the chart under this key. # Config persistence is required for the Prometheus exporter sidecar.
     #     probes	object	See values.yaml	Configures the probes for the main Pod.
     #     service	object	See values.yaml	Configures service settings for the chart.
+
   destination:
-    server: https://kubernetes.default.svc
+    server:    https://kubernetes.default.svc
     namespace: media
+
   syncPolicy:
     automated:
-      prune: true
+      prune:    true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-
