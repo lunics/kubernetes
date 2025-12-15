@@ -1,0 +1,17 @@
+#kubectl describe gateway traefik-gateway -n traefik
+kind:       Gateway
+apiVersion: gateway.networking.k8s.io/v1
+
+metadata:
+  name:      traefik-gateway
+  namespace: traefik
+
+spec:
+  gatewayClassName: traefik
+  listeners:
+  - name: web
+    port: 8000
+    protocol: HTTP
+    allowedRoutes:
+      namespaces:
+        from: All

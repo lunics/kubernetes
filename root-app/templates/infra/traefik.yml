@@ -21,15 +21,15 @@ spec:
             entryPoints:
               - web
 
-        gateway:
-          listeners:
-            web:
-              namespacePolicy:
-                from: All
-
         providers:
           kubernetesGateway:
             enabled: true
+
+        # gateway:
+        #   listeners:
+        #     web:
+        #       namespacePolicy:
+        #         from: All    # All, Same    KO Unsupported value: "map[from:All]": supported values: "All", "Selector", "Same"
 
         # deployment:
         #   replicas: 1
