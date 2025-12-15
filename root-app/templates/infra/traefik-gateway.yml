@@ -1,4 +1,3 @@
-#kubectl describe gateway traefik-gateway -n traefik
 kind:       Gateway
 apiVersion: gateway.networking.k8s.io/v1
 
@@ -14,4 +13,4 @@ spec:
     protocol: HTTP
     allowedRoutes:
       namespaces:
-        from: All
+        from: All   # All, Same
