@@ -26,10 +26,10 @@ spec:
             enabled: true
 
         gateway:
-         listeners:
-           web:
-             namespacePolicy:
-               from: All 
+          listeners:
+            web:
+              namespacePolicy:
+                from: All 
 
         # deployment:
         #   replicas: 1
