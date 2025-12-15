@@ -21,15 +21,15 @@ spec:
             entryPoints:
               - web
 
-        providers:
-          kubernetesGateway:
-            enabled: true
-
         gateway:
           listeners:
             web:
               namespacePolicy:
-                from: Same    # All, Same
+                from: All
+
+        providers:
+          kubernetesGateway:
+            enabled: true
 
         # deployment:
         #   replicas: 1
