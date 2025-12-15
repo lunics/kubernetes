@@ -1,8 +1,8 @@
+kind:       Application
 apiVersion: argoproj.io/v1alpha1
-kind: Application
 
 metadata:
-  name: traefik
+  name:      traefik
   namespace: argo-cd
 
 spec:
@@ -10,7 +10,7 @@ spec:
 
   source:
     repoURL: https://traefik.github.io/charts
-    chart: traefik
+    chart:   traefik
     targetRevision: 30.1.0
     helm:
       values: |
@@ -25,11 +25,11 @@ spec:
           kubernetesGateway:
             enabled: true
 
-        # gateway:
-        #  listeners:
-        #    web:
-        #      namespacePolicy:
-        #        from: All 
+        gateway:
+         listeners:
+           web:
+             namespacePolicy:
+               from: All 
 
         # deployment:
         #   replicas: 1
