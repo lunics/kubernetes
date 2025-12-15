@@ -11,12 +11,12 @@ spec:
       namespace: traefik        # traefik-gateway is in the traefik namespace
 
   hostnames:
-    - "sonarr.localhost"
+    - "sonarr-gateway.localhost"
 
   rules:
     - matches:
         - path:
-            type: PathPrefix
+            type:  PathPrefix
             value: /
 
       backendRefs:
