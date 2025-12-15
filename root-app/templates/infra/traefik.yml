@@ -21,9 +21,9 @@ spec:
             entryPoints:
               - web
 
-        providers:
-          kubernetesGateway:
-            enabled: true
+        # providers:
+        #   kubernetesGateway:
+        #     enabled: true
 
         # gateway:
         #   listeners:
