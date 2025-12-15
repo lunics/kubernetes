@@ -25,11 +25,11 @@ spec:
           kubernetesGateway:
             enabled: true
 
-        gateway:
-         listeners:
-           web:
-             namespacePolicy:
-               from: All 
+        # gateway:
+        #  listeners:
+        #    web:
+        #      namespacePolicy:
+        #        from: All 
 
         # deployment:
         #   replicas: 1
