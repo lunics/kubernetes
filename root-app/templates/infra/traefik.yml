@@ -29,7 +29,7 @@ spec:
           listeners:
             web:
               namespacePolicy:
-                from: "All"
+                from: All
 
         # deployment:
         #   replicas: 1
