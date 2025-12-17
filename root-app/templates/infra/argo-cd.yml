@@ -1,0 +1,39 @@
+kind:       Application
+apiVersion: argoproj.io/v1alpha1
+
+metadata:
+  name:      argo-cd
+  namespace: argo-cd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+
+spec:
+  project: default
+
+  source:
+    repoURL:        https://argoproj.github.io/argo-helm
+    chart:          argo-cd
+    targetRevision: 7.3.10
+    helm:
+      values: |-
+        namespaceOverride: argo-cd
+        dex:                
+          enabled: false    # disable integration with external auth providers
+        notifications:
+          enabled: false
+        applicationSet:
+          enabled: false
+        server:
+          extraArgs:
+            - --insecure    # for Web UI over HTTP
+
+  destination:
+    server:    https://kubernetes.default.svc
+    namespace: argo-cd
+
+  syncPolicy:
+    automated:
+      prune:    true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
