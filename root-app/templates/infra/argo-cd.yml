@@ -14,18 +14,18 @@ spec:
     repoURL:        https://argoproj.github.io/argo-helm
     chart:          argo-cd
     targetRevision: 7.3.10
-    helm:
-      values: |
-        # namespaceOverride: argo-cd
-        dex:                
-          enabled: false    # disable integration with external auth providers
-        notifications:
-          enabled: false
-        applicationSet:
-          enabled: false
-        server:
-          extraArgs:
-            - --insecure    # for Web UI over HTTP
+    # helm:   ## doesn't replace the manual: helm install argocd argo/argo-cd -n argo-cd
+    #   values: |
+    #     namespaceOverride: argo-cd
+    #     dex:                
+    #       enabled: false    # disable integration with external auth providers
+    #     notifications:
+    #       enabled: false
+    #     applicationSet:
+    #       enabled: false
+    #     server:
+    #       extraArgs:
+    #         - --insecure    # for Web UI over HTTP
 
   destination:
     server:    https://kubernetes.default.svc
