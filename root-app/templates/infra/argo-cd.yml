@@ -16,7 +16,7 @@ spec:
     targetRevision: 7.3.10
     helm:
       values: |
-        namespaceOverride: argo-cd
+        # namespaceOverride: argo-cd
         dex:                
           enabled: false    # disable integration with external auth providers
         notifications:
