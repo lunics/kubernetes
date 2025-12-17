@@ -14,9 +14,9 @@ spec:
     repoURL:        https://argoproj.github.io/argo-helm
     chart:          argo-cd
     targetRevision: 7.3.10
-    # helm:   ## doesn't replace the manual: helm install argocd argo/argo-cd -n argo-cd
-    #   values: |
-    #     namespaceOverride: argo-cd
+    helm:
+      values: |
+        namespaceOverride: argocd
     #     dex:                
     #       enabled: false    # disable integration with external auth providers
     #     notifications:
