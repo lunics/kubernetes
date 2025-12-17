@@ -12,7 +12,7 @@ spec:
 
   source:
     repoURL:        git@github.com:lunics/argo-cd.git
-    path:           root-app
+    path:           /
     targetRevision: HEAD
 
   destination:
