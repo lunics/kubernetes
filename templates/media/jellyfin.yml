@@ -6,7 +6,6 @@ metadata:
   namespace: argo-cd
 
 spec:
-  project: default
   source:
     repoURL:        https://github.com/jellyfin/jellyfin-helm
     path:           charts/jellyfin
@@ -49,12 +48,16 @@ spec:
     #       limits:
     #         cpu: 1000m
     #         memory: 1500Mi
+
   destination:
-    server: https://kubernetes.default.svc
-    namespace: jellyfin
+    server:    https://kubernetes.default.svc
+    namespace: media
+
+  project: default
+
   syncPolicy:
     automated:
-      prune: true
+      prune:    true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true

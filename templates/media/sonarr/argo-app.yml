@@ -6,7 +6,6 @@ metadata:
   namespace: argo-cd
 
 spec:
-  project: default
   source:
     repoURL:        https://charts.pree.dev
     chart:          sonarr
@@ -38,6 +37,8 @@ spec:
   destination:
     server:    https://kubernetes.default.svc
     namespace: media
+
+  project: default
 
   syncPolicy:
     automated:

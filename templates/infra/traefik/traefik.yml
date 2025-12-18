@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: https://traefik.github.io/charts
     chart:   traefik
-    targetRevision: 30.1.0
+    targetRevision: 38.0.0
     helm:
       values: |
         ingressRoute:
@@ -21,15 +21,15 @@ spec:
             entryPoints:
               - web
 
-        # providers:
-        #   kubernetesGateway:
-        #     enabled: true
+        providers:
+          kubernetesGateway:
+            enabled: true
 
-        # gateway:
-        #   listeners:
-        #     web:
-        #       namespacePolicy:
-        #         from: All    # All, Same    KO Unsupported value: "map[from:All]": supported values: "All", "Selector", "Same"
+        gateway:
+          listeners:
+            web:
+              namespacePolicy:
+                from: All       # All, Same    KO Unsupported value: "map[from:All]": supported values: "All", "Selector", "Same"
 
         # deployment:
         #   replicas: 1
