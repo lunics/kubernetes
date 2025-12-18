@@ -33,7 +33,8 @@ spec:
 
   syncPolicy:
     automated:
-      prune:    true
-      selfHeal: true
+      prune:      true  # delete/prune kube resources that are no longer defined in git
+      selfHeal:   true  # specifies if partial app sync should be executed when resources are changed only in target Kubernetes cluster and no git change detected
+      allowEmpty: true  # allows deleting all application resources during automatic syncing
     syncOptions:
       - CreateNamespace=true
