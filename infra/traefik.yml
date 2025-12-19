@@ -35,33 +35,13 @@ spec:
               namespacePolicy:
                 from: All
 
-        # deployment:
-        #   replicas: 1
-
-        # ports:
-        #   web:
-        #     port: 8080
-        #     exposedPort: 80
-        #   websecure:
-        #     port: 8443
-        #     exposedPort: 443
-        #     tls:
-        #       enabled: true
-
-        # service:
-        #   type: NodePort        # LoadBalancer, NodePort
-        #   ports:
-        #     web:
-        #       nodePort: 30080
-        #     websecure:
-        #       nodePort: 30443
-  
   destination:
     server:    https://kubernetes.default.svc
     namespace: traefik
   
   syncPolicy:
     automated:
+      enabled:  true
       prune:    true
       selfHeal: true
     syncOptions:
