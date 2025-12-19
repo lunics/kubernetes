@@ -13,8 +13,10 @@ spec:
     chart:   traefik
     targetRevision: 38.0.0
     helm:
-      valueFiles:
-        - values.yml
+      valuesFrom:
+        - configMapKeyRef:
+            name: traefik-helm-values
+            key:  helm-values
 
   destination:
     server:    https://kubernetes.default.svc
