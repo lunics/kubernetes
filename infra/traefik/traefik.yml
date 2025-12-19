@@ -15,10 +15,12 @@ spec:
     chart:   traefik
     targetRevision: 38.0.0
     helm:
-      valuesFrom:
-        - configMapKeyRef:
-            name: traefik-helm-values
-            key:  helm-values
+      valueFiles:
+        - infra/traefik/values.yaml
+      # valuesFrom:
+      #   - configMapKeyRef:
+      #       name: traefik-helm-values
+      #       key:  helm-values
 
   destination:
     server:    https://kubernetes.default.svc
