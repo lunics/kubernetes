@@ -1,4 +1,0 @@
-# file required to help argo-cd to find path of root-app
-apiVersion: v2
-name:       root-app
-version:    1.0.0

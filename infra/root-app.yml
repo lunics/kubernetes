@@ -11,9 +11,13 @@ spec:
   project: default
 
   source:
-    repoURL:        git@github.com:lunics/argo-cd.git
-    path:           .
-    targetRevision: HEAD
+    - repoURL:        git@github.com:lunics/argo-cd.git
+      path:           infra
+      targetRevision: HEAD
+
+    - repoURL:        git@github.com:lunics/argo-cd.git
+      path:           apps
+      targetRevision: HEAD
 
   destination:
     server:    https://kubernetes.default.svc
