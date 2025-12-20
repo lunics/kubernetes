@@ -1,0 +1,25 @@
+kind:       Application
+apiVersion: argoproj.io/v1alpha1
+
+metadata:
+  name:      whoami
+  namespace: argo-cd
+
+spec:
+  source:
+    repoURL:        git@github.com:lunics/argo-cd.git
+    targetRevision: HEAD
+    path:           apps/whoami
+
+  destination:
+    server:    https://kubernetes.default.svc
+    namespace: traefik
+  
+  project: default
+
+  syncPolicy:
+    automated:
+      prune:    true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
