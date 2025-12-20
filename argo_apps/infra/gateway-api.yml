@@ -17,15 +17,10 @@ spec:
 
   project: default
 
-  ignoreDifferences:        # required to avoid ArgoCD injects its tracking annotation for every CRDs that exceed size
-    - group: apiextensions.k8s.io
-      kind: CustomResourceDefinition
-      jsonPointers:
-        - /metadata/annotations
-
   syncPolicy:
     automated:
       selfHeal: true
       prune:    true
     syncOptions:
       - CreateNamespace=true
+      - ServerSideApply=true    # fix issue annotation exceeding limit
