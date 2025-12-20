@@ -12,6 +12,9 @@ spec:
     repoURL:        https://charts.pree.dev
     chart:          sonarr
     targetRevision: 1.11.0
+    path:         media/sonarr
+    directory:
+      recurse: true
     # helm:
     #   values: |
     #     env	object	See below	environment variables.

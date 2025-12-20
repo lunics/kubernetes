@@ -16,11 +16,15 @@ spec:
     repoURL: https://traefik.github.io/charts
     chart:   traefik
     targetRevision: 38.0.0
-    helm:
-      valuesFrom:
-        - configMapKeyRef:
-            name: traefik-helm-values
-            key:  values.yaml
+    # path:    infra/traefik
+    # directory:
+    #   recurse: true
+
+    # helm:
+    #   valuesFrom:
+    #     - configMapKeyRef:
+    #         name: traefik-helm-values
+    #         key:  values.yaml
 
   destination:
     server:    https://kubernetes.default.svc
