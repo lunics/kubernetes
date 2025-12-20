@@ -1,12 +1,14 @@
 ports:
   http:
     port: 80
-    expose: true
+    expose:
+      default: true
     protocol: TCP
 
   https:
     port: 443
-    expose: true
+    expose:
+      default: true
     protocol: TCP
     tls:
       enabled: true
