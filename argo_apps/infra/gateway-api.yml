@@ -10,8 +10,6 @@ spec:
     repoURL:        https://github.com/kubernetes-sigs/gateway-api.git
     targetRevision: HEAD
     path:           config/crd/experimental     # standard, experimental
-    # plugin:
-    #   name: ignore-tracking
 
   destination:
     server:    https://kubernetes.default.svc
