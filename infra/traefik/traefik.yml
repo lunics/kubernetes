@@ -11,6 +11,7 @@ metadata:
 
 spec:
   project: default
+
   sources:
     - repoURL: https://traefik.github.io/charts
       chart:   traefik

@@ -1,7 +1,7 @@
-ports:
-  web:
-    port: 80
-    expose: true
+# ports:
+#   web:
+#     port: 80
+#     expose: true
 
 ingressRoute:
   dashboard:

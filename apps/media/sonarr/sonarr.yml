@@ -9,12 +9,18 @@ metadata:
 
 spec:
   source:
-    repoURL:        https://charts.pree.dev
-    chart:          sonarr
-    targetRevision: 1.11.0
-    path:         media/sonarr
-    directory:
-      recurse: true
+
+  sources:
+    - repoURL:        https://charts.pree.dev
+      chart:          sonarr
+      targetRevision: 1.11.0
+      helm:
+        valueFiles:
+          - $values/apps/media/sonarr/http-route.yml
+    - repoURL: git@github.com:lunics/argo-cd.git
+      targetRevision: HEAD
+      ref: values
+
     # helm:
     #   values: |
     #     env	object	See below	environment variables.
