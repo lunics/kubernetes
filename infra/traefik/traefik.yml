@@ -6,9 +6,8 @@ metadata:
   namespace: argo-cd
   finalizers:
     - resources-finalizer.argocd.argoproj.io      
-  metadata:
-    annotations:
-      argocd.argoproj.io/sync-wave: "0"
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
 
 spec:
   project: default
@@ -18,13 +17,10 @@ spec:
     chart:   traefik
     targetRevision: 38.0.0
     helm:
-      valueFiles:
-        - helm_values.yaml
-
-      # valuesFrom:
-      #   - configMapKeyRef:
-      #       name: traefik-helm-values
-      #       key:  helm-values
+      valuesFrom:
+        - configMapKeyRef:
+            name: traefik-helm-values
+            key:  values.yaml
 
   destination:
     server:    https://kubernetes.default.svc
