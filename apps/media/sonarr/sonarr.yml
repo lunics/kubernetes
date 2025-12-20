@@ -8,13 +8,19 @@ metadata:
     - resources-finalizer.argocd.argoproj.io      
 
 spec:
-  sources:
-    - repoURL:        https://charts.pree.dev
-      chart:          sonarr
-      targetRevision: 1.11.0
-    - repoURL:        git@github.com:lunics/argo-cd.git
-      targetRevision: HEAD
-      path:           apps/media/sonarr
+  source:
+    repoURL: git@github.com:lunics/argo-cd.git
+    targetRevision: HEAD
+    path: apps/media/sonarr
+    kustomize: {}
+
+  # sources:
+  #   - repoURL:        https://charts.pree.dev
+  #     chart:          sonarr
+  #     targetRevision: 1.11.0
+    # - repoURL:        git@github.com:lunics/argo-cd.git
+    #   targetRevision: HEAD
+    #   path:           apps/media/sonarr
 
     # helm:
     #   values: |
