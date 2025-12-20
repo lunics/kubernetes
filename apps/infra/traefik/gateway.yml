@@ -9,24 +9,21 @@ spec:
   gatewayClassName: traefik
   
   listeners:
-    - name:     http
-      protocol: HTTP
+    - name:     web    # entry point name
       port:     80
+      protocol: HTTP
       allowedRoutes:
         namespaces:
-          from: All   # Same, All
+          from: All     # Same, All
     
-    # - name:     https
-    #   protocol: HTTPS
-    #   port:     443
-    #   tls:
-    #     mode: Terminate
-    #     certificateRefs:
-    #       - name:      secret-selfsigned-tls
-    #         namespace: default
-    #       # - kind: Secret
-    #       #   name: local-selfsigned-tls  # the Secret we created before the installation
-    #       #   group: ""
-    #   allowedRoutes:
-    #     namespaces:
-    #       from: All
+    - name:     websecure
+      port:     443
+      protocol: HTTPS
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name:      secret-selfsigned-tls
+            namespace: default
+      allowedRoutes:
+        namespaces:
+          from: All
