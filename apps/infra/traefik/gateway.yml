@@ -4,6 +4,7 @@ apiVersion: gateway.networking.k8s.io/v1
 metadata:
   name:      traefik-gateway
   namespace: traefik
+
 spec:
   gatewayClassName: traefik
   
@@ -13,19 +14,19 @@ spec:
       port:     80
       allowedRoutes:
         namespaces:
-          from: All  # Same, All
+          from: All   # Same, All
     
-    - name:     https
-      protocol: HTTPS
-      port:     443
-      tls:
-        mode: Terminate
-        certificateRefs:
-          - name:      secret-selfsigned-tls
-            namespace: default
-          # - kind: Secret
-          #   name: local-selfsigned-tls  # the Secret we created before the installation
-          #   group: ""
-      allowedRoutes:
-        namespaces:
-          from: All
+    # - name:     https
+    #   protocol: HTTPS
+    #   port:     443
+    #   tls:
+    #     mode: Terminate
+    #     certificateRefs:
+    #       - name:      secret-selfsigned-tls
+    #         namespace: default
+    #       # - kind: Secret
+    #       #   name: local-selfsigned-tls  # the Secret we created before the installation
+    #       #   group: ""
+    #   allowedRoutes:
+    #     namespaces:
+    #       from: All
