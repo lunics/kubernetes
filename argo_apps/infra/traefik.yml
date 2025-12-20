@@ -13,15 +13,16 @@ spec:
   project: default
 
   sources:
-    - repoURL: https://traefik.github.io/charts
-      chart:   traefik
+    - repoURL:        https://traefik.github.io/charts
+      chart:          traefik
       targetRevision: 38.0.0
       helm:
         valueFiles:
           - $values/apps/infra/traefik/helm_values.yml
-    - repoURL: git@github.com:lunics/argo-cd.git
+    - repoURL:        git@github.com:lunics/argo-cd.git
       targetRevision: HEAD
-      ref: values
+      ref:            values
+      path:           apps/infra/traefik
 
   destination:
     server:    https://kubernetes.default.svc
