@@ -9,13 +9,21 @@ spec:
   source:
     repoURL:        https://github.com/kubernetes-sigs/gateway-api.git
     targetRevision: HEAD
-    path:           config/crd/standard     # standard, experimental
+    path:           config/crd/experimental     # standard, experimental
+    # plugin:
+    #   name: ignore-tracking
 
   destination:
     server:    https://kubernetes.default.svc
     namespace: argo-cd
 
   project: default
+
+  ignoreDifferences:        # required to avoid ArgoCD injects its tracking annotation for every CRDs that exceed size
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      jsonPointers:
+        - /metadata/annotations
 
   syncPolicy:
     automated:
