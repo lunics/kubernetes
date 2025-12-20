@@ -1,0 +1,25 @@
+kind:       Application
+apiVersion: argoproj.io/v1alpha1
+
+metadata:
+  name:      gateway-api
+  namespace: argo-cd
+
+spec:
+  source:
+    repoURL:        https://github.com/kubernetes-sigs/gateway-api.git
+    targetRevision: HEAD
+    path:           config/crd/standard
+
+  destination:
+    server:    https://kubernetes.default.svc
+    namespace: argo-cd
+
+  project: default
+
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune:    true
+    syncOptions:
+      - CreateNamespace=true
