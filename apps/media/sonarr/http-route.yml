@@ -6,7 +6,7 @@ metadata:
   namespace: media
   metadata:
     annotations:
-      argocd.argoproj.io/sync-wave: "1"
+      argocd.argoproj.io/sync-wave: "1"   # doesn't work across Applications
 
 spec:
   parentRefs:
