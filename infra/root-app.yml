@@ -36,7 +36,7 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-      - RespectIgnoreDifferences=true     # allow changes in child apps without triggering an out-of-sync status
+      # - RespectIgnoreDifferences=true     # allow changes in child apps without triggering an out-of-sync status
 
   # ignoreDifferences:
   #   - group: "*"
