@@ -19,19 +19,6 @@ spec:
     directory:
       recurse: true
 
-  # sources:
-  #   - repoURL:        git@github.com:lunics/argo-cd.git
-  #     path:           infra
-  #     targetRevision: HEAD
-  #     # directory:
-  #     #   recurse: true
-
-  #   - repoURL:        git@github.com:lunics/argo-cd.git
-  #     path:           apps
-  #     targetRevision: HEAD
-  #     # directory:
-  #     #   recurse: true
-
   destination:
     server:    https://kubernetes.default.svc
     namespace: argo-cd
