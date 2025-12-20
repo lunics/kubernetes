@@ -12,12 +12,9 @@ spec:
     - repoURL:        https://charts.pree.dev
       chart:          sonarr
       targetRevision: 1.11.0
-      helm:
-        valueFiles:
-          - $values/apps/media/sonarr/http-route.yml
-    - repoURL: git@github.com:lunics/argo-cd.git
+    - repoURL:        git@github.com:lunics/argo-cd.git
       targetRevision: HEAD
-      ref: values
+      path:           apps/media/sonarr
 
     # helm:
     #   values: |
