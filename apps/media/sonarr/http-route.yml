@@ -14,14 +14,14 @@ spec:
       sectionName: http
 
   hostnames:
-    - "sonarr.localhost"
+    - sonarr.localhost
 
   rules:
-    # - matches:
-    #     - path:
-    #         type:  PathPrefix
-    #         value: /
+    - matches:
+        - path:
+            type:  PathPrefix
+            value: /
 
-    - backendRefs:
+      backendRefs:
         - name: sonarr
           port: 8989
