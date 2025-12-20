@@ -18,7 +18,7 @@ spec:
     targetRevision: 38.0.0
     helm:
       valueFiles:
-        - ../infra/traefik/configMap.yml
+        - /../infra/traefik/configMap.yml
 
     # path:    infra/traefik
     # directory:
