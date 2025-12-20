@@ -18,7 +18,7 @@ spec:
       targetRevision: 38.0.0
       helm:
         valueFiles:
-          - $values/infra/traefik/helm_values.yml
+          - $values/apps/infra/traefik/helm_values.yml
     - repoURL: git@github.com:lunics/argo-cd.git
       targetRevision: HEAD
       ref: values

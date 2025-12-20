@@ -15,7 +15,7 @@ spec:
   source:
     repoURL:        git@github.com:lunics/argo-cd.git
     targetRevision: HEAD
-    path:           .
+    path:           argo_apps
     directory:
       recurse: true
 
@@ -30,10 +30,3 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-      - RespectIgnoreDifferences=true     # allow changes in child apps without triggering an out-of-sync status
-
-  ignoreDifferences:
-    - group: "*"
-      kind:  ConfigMap
-      jsonPointers:
-        - /spec/source/helm/valuesFrom

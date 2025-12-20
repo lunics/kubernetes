@@ -9,15 +9,16 @@ metadata:
 
 spec:
   source:
-    repoURL: git@github.com:lunics/argo-cd.git
-    targetRevision: HEAD
-    path: apps/media/sonarr
-    kustomize: {}
+    repoURL:        https://charts.pree.dev
+    chart:          sonarr
+    targetRevision: 1.11.0
+    # kustomize: {}
+
+    # repoURL: git@github.com:lunics/argo-cd.git
+    # targetRevision: HEAD
+    # path: apps/media/sonarr
 
   # sources:
-  #   - repoURL:        https://charts.pree.dev
-  #     chart:          sonarr
-  #     targetRevision: 1.11.0
     # - repoURL:        git@github.com:lunics/argo-cd.git
     #   targetRevision: HEAD
     #   path:           apps/media/sonarr
