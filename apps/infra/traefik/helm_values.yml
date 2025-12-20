@@ -1,34 +1,49 @@
-# ports:
-#   http:
-#     port: 80
-#     expose:
-#       default: true
-#     protocol: TCP
+ports:
+  web:                # Defines the HTTP entry point named 'web'
+    port: 80
+    nodePort: 30000
+    # Instructs this entry point to redirect all traffic to the 'websecure' entry point
+    redirections:
+      entryPoint:
+        to: websecure
+        scheme: https
+        permanent: true
+  
+  websecure:          # Defines the HTTPS entry point named 'websecure'
+    port: 443
+    nodePort: 30001
 
-#   https:
-#     port: 443
-#     expose:
-#       default: true
-#     protocol: TCP
-#     tls:
-#       enabled: true
+api:
+  dashboard: true
+  insecure:  true
 
 ingressRoute:
   dashboard:
     enabled: true
     matchRule: Host(`traefik.localhost`)
     entryPoints:
-      - http
+      - web
 
 providers:
   kubernetesGateway:
     enabled: true
+  # kubernetesIngress:
+  #   enabled: false
 
 gateway:
   listeners:
-    http:
+    web:
+      port: 80
+      protocol: HTTP
       namespacePolicy:
         from: All
-    https:
+    websecure:         # HTTPS listener that matches entryPoint `websecure`
+      port: 443
+      protocol: HTTPS  # TLS terminates inside Traefik
       namespacePolicy:
         from: All
+      mode: Terminate
+      certificateRefs:    
+        - kind: Secret
+          name: local-selfsigned-tls  # the Secret we created before the installation
+          group: ""
