@@ -4,11 +4,11 @@ ports:
     port:     80
     nodePort: 30000
     # Instructs this entry point to redirect all traffic to the 'https' entry point
-    redirections:
-      entryPoint:
-        to:        websecure  # name of the entry point
-        scheme:    https      # protocol
-        permanent: true
+    # redirections:
+    #   entryPoint:
+    #     to:        websecure  # name of the entry point
+    #     scheme:    https      # protocol
+    #     permanent: true
   
   websecure:                  # HTTPS entry point named 'websecure'
     port:        443
@@ -25,25 +25,25 @@ ingressRoute:
     matchRule: Host(`traefik.localhost`)
     entryPoints:
       - web
-    middlewares:
-      - name: dashboard-auth
+    # middlewares:
+    #   - name: dashboard-auth
 
-extraObjects:
-  - apiVersion: v1
-    kind: Secret
-    metadata:
-      name: dashboard-auth-secret
-    type: kubernetes.io/basic-auth
-    stringData:
-      username: admin
-      password: "changeme"      # Replace with an Actual Password
-  - apiVersion: traefik.io/v1alpha1
-    kind: Middleware
-    metadata:
-      name: dashboard-auth
-    spec:
-      basicAuth:
-        secret: dashboard-auth-secret
+# extraObjects:
+#   - apiVersion: v1
+#     kind: Secret
+#     metadata:
+#       name: dashboard-auth-secret
+#     type: kubernetes.io/basic-auth
+#     stringData:
+#       username: admin
+#       password: "changeme"      # Replace with an Actual Password
+#   - apiVersion: traefik.io/v1alpha1
+#     kind: Middleware
+#     metadata:
+#       name: dashboard-auth
+#     spec:
+#       basicAuth:
+#         secret: dashboard-auth-secret
 
 providers:
   kubernetesGateway:
