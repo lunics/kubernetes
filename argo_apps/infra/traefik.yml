@@ -23,8 +23,6 @@ spec:
       targetRevision: HEAD
       ref:            values
       path:           apps/infra/traefik
-      # directory:
-      #   exclude: 'helm_values.yml'
 
   destination:
     server:    https://kubernetes.default.svc

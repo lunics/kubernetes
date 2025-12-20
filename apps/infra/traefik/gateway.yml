@@ -14,7 +14,7 @@ spec:
       protocol: HTTP
       allowedRoutes:
         namespaces:
-          from: All     # Same, All
+          from: All
     
     - name:     websecure
       port:     443
@@ -23,7 +23,9 @@ spec:
         mode: Terminate
         certificateRefs:
           - name:      secret-selfsigned-tls
-            namespace: default
+            namespace: traefik
+            group:     ""
+            kind:      Secret
       allowedRoutes:
         namespaces:
           from: All
