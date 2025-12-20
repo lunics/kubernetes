@@ -11,24 +11,16 @@ metadata:
 
 spec:
   project: default
-
-  source:
-    repoURL: https://traefik.github.io/charts
-    chart:   traefik
-    targetRevision: 38.0.0
-    helm:
-      valueFiles:
-        - values/configMap.yml
-
-    # path:    infra/traefik
-    # directory:
-    #   recurse: true
-
-    # helm:
-    #   valuesFrom:
-    #     - configMapKeyRef:
-    #         name: traefik-helm-values
-    #         key:  values.yaml
+  sources:
+    - repoURL: https://traefik.github.io/charts
+      chart:   traefik
+      targetRevision: 38.0.0
+      helm:
+        valueFiles:
+          - $values/infra/traefik/configMap.yml
+    - repoURL: git@github.com:lunics/argo-cd.git
+      targetRevision: HEAD
+      ref: values
 
   destination:
     server:    https://kubernetes.default.svc
