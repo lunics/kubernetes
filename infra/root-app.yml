@@ -16,8 +16,8 @@ spec:
     repoURL:        git@github.com:lunics/argo-cd.git
     path:           .
     targetRevision: HEAD
-    directory:
-      recurse: true
+    # directory:
+    #   recurse: true
 
   # sources:
   #   - repoURL:        git@github.com:lunics/argo-cd.git
