@@ -8,8 +8,6 @@ metadata:
     - resources-finalizer.argocd.argoproj.io      
 
 spec:
-  source:
-
   sources:
     - repoURL:        https://charts.pree.dev
       chart:          sonarr
