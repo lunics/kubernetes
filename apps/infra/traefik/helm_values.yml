@@ -1,24 +1,24 @@
-ports:
-  http:
-    port: 80
-    expose:
-      default: true
-    protocol: TCP
+# ports:
+#   http:
+#     port: 80
+#     expose:
+#       default: true
+#     protocol: TCP
 
-  https:
-    port: 443
-    expose:
-      default: true
-    protocol: TCP
-    tls:
-      enabled: true
+#   https:
+#     port: 443
+#     expose:
+#       default: true
+#     protocol: TCP
+#     tls:
+#       enabled: true
 
 ingressRoute:
   dashboard:
     enabled: true
     matchRule: Host(`traefik.localhost`)
     entryPoints:
-      - web
+      - http
 
 providers:
   kubernetesGateway:
