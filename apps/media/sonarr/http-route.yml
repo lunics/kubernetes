@@ -2,25 +2,25 @@ kind:       HTTPRoute
 apiVersion: gateway.networking.k8s.io/v1
 
 metadata:
-  name:      sonarr-httproute
+  name:      sonarr
   namespace: media
   annotations:
     argocd.argoproj.io/sync-wave: "1"   # doesn't work across Applications
 
 spec:
   parentRefs:
-    - name:      traefik-gateway
-      namespace: traefik            # because traefik-gateway is in the traefik namespace
-      sectionName: web
+    - name:        traefik-gateway
+      namespace:   traefik            # because traefik-gateway is in the traefik namespace
+      sectionName: http
 
   hostnames:
-    - sonarr.localhost
+    - "sonarr.localhost"
 
   rules:
-    - matches:
-        - path:
-            type:  PathPrefix
-            value: /
+    # - matches:
+    #     - path:
+    #         type:  PathPrefix
+    #         value: /
 
       backendRefs:
         - name: sonarr

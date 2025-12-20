@@ -1,5 +1,5 @@
 ports:
-  web:                # Defines the HTTP entry point named 'web'
+  http:                # Defines the HTTP entry point named 'web'
     port: 80
     # nodePort: 30000
     # Instructs this entry point to redirect all traffic to the 'websecure' entry point
@@ -9,7 +9,7 @@ ports:
     #     scheme: https
     #     permanent: true
   
-  websecure:          # Defines the HTTPS entry point named 'websecure'
+  https:          # Defines the HTTPS entry point named 'websecure'
     port: 443
     exposedPort: 443
     # nodePort: 30001
@@ -28,31 +28,15 @@ api:
 providers:
   kubernetesGateway:
     enabled: true
-    # experimentalChannel: true
-  # kubernetesIngress:
-  #   enabled: false
+    experimentalChannel: true
+  kubernetesIngress:
+    enabled: false
 
 gatewayClass:
   enabled: false
+
 gateway:
   enabled: false
-
-  # listeners:
-  #   web:
-  #     port: 80
-  #     protocol: HTTP
-  #     namespacePolicy:
-  #       from: All
-    # websecure:         # HTTPS listener that matches entryPoint `websecure`
-    #   port: 443
-    #   protocol: HTTPS  # TLS terminates inside Traefik
-    #   namespacePolicy:
-    #     from: All
-    #   mode: Terminate
-    #   certificateRefs:    
-    #     - kind: Secret
-    #       name: local-selfsigned-tls  # the Secret we created before the installation
-    #       group: ""
 
 logs:
   access:
