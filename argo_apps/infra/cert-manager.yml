@@ -1,0 +1,34 @@
+kind:       Application
+apiVersion: argoproj.io/v1alpha1
+
+metadata:
+  name:      cert-manager
+  namespace: argo-cd
+
+spec:
+  source:
+    repoURL:        https://charts.jetstack.io
+    chart:          cert-manager
+    targetRevision: v1.19.2
+    helm:
+      values: |
+        installCRDs: true
+
+        prometheus:
+          enabled: false
+
+        webhook:
+          securePort: 10250
+
+  destination:
+    server:    https://kubernetes.default.svc
+    namespace: cert-manager
+
+  project: default
+
+  syncPolicy:
+    automated:
+      prune:    true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
