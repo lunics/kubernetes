@@ -1,0 +1,32 @@
+kind:       Application
+apiVersion: argoproj.io/v1alpha1
+
+metadata:
+  name:      homer
+  namespace: argo-cd
+
+spec:
+  sources:
+    - repoURL:        https://djjudas21.github.io/charts/
+      chart:          homer
+      targetRevision: 8.2.4
+      helm:
+        valueFiles:
+          - $values/apps/homer/helm-values.yml
+    - repoURL:        git@github.com:lunics/argo-cd.git
+      targetRevision: HEAD
+      ref:            values
+      path:           apps/homer
+
+  destination:
+    server:    https://kubernetes.default.svc
+    namespace: homer
+  
+  project: default
+
+  syncPolicy:
+    automated:
+      prune:    true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
