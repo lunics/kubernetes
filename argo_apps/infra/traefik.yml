@@ -10,15 +10,13 @@ metadata:
     argocd.argoproj.io/sync-wave: "0"
 
 spec:
-  project: default
-
   sources:
     - repoURL:        https://traefik.github.io/charts
       chart:          traefik
       targetRevision: 38.0.0
       helm:
         valueFiles:
-          - $values/apps/infra/traefik/helm_values.yml
+          - $values/apps/infra/traefik/helm-values.yml
     - repoURL:        git@github.com:lunics/argo-cd.git
       targetRevision: HEAD
       ref:            values
@@ -28,6 +26,8 @@ spec:
     server:    https://kubernetes.default.svc
     namespace: traefik
   
+  project: default
+
   syncPolicy:
     automated:
       prune:    true

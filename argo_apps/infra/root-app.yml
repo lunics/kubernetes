@@ -10,8 +10,6 @@ metadata:
     - resources-finalizer.argocd.argoproj.io      
 
 spec:
-  project: default
-
   source:
     repoURL:        git@github.com:lunics/argo-cd.git
     targetRevision: HEAD
@@ -22,6 +20,8 @@ spec:
   destination:
     server:    https://kubernetes.default.svc
     namespace: argo-cd
+
+  project: default
 
   syncPolicy:
     automated:
