@@ -14,7 +14,7 @@ spec:
       targetRevision: 1.11.0
     - repoURL:        git@github.com:lunics/argo-cd.git
       targetRevision: HEAD
-      path:           apps/media/sonarr
+      path:           media/sonarr
 
     # helm:
     #   values: |

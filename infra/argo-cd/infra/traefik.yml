@@ -2,25 +2,29 @@ kind:       Application
 apiVersion: argoproj.io/v1alpha1
 
 metadata:
-  name:      homer
+  name:      traefik
   namespace: argo-cd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io      
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
 
 spec:
   sources:
-    - repoURL:        https://djjudas21.github.io/charts/
-      chart:          homer
-      targetRevision: 8.2.4
+    - repoURL:        https://traefik.github.io/charts
+      chart:          traefik
+      targetRevision: 38.0.0
       helm:
         valueFiles:
-          - $values/apps/homer/helm-values.yml
+          - $values/apps/infra/traefik/helm-values.yml
     - repoURL:        git@github.com:lunics/argo-cd.git
       targetRevision: HEAD
       ref:            values
-      path:           apps/homer
+      path:           infra/traefik
 
   destination:
     server:    https://kubernetes.default.svc
-    namespace: homer
+    namespace: traefik
   
   project: default
 
@@ -30,3 +34,4 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+      - ServerSideApply=true
