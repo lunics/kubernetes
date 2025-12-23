@@ -6,8 +6,8 @@ metadata:
   namespace: argo-cd
   finalizers:
     - resources-finalizer.argocd.argoproj.io      
-  annotations:
-    argocd.argoproj.io/sync-wave: "0"
+  # annotations:
+  #   argocd.argoproj.io/sync-wave: "0"
 
 spec:
   sources:
@@ -16,7 +16,7 @@ spec:
       targetRevision: 38.0.0
       helm:
         valueFiles:
-          - $values/apps/infra/traefik/helm-values.yml
+          - $values/infra/traefik/helm-values.yml
     - repoURL:        git@github.com:lunics/argo-cd.git
       targetRevision: HEAD
       ref:            values

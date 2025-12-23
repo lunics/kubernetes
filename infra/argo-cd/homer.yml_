@@ -12,7 +12,7 @@ spec:
       targetRevision: 8.2.4
       helm:
         valueFiles:
-          - $values/apps/homer/helm-values.yml
+          - $values/homer/helm-values.yml
     - repoURL:        git@github.com:lunics/argo-cd.git
       targetRevision: HEAD
       ref:            values
