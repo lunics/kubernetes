@@ -1,0 +1,31 @@
+kind:       Application
+apiVersion: argoproj.io/v1alpha1
+
+metadata:
+  name:      harbor
+  namespace: argo-cd
+
+spec:
+  sources:
+    - repoURL:        https://helm.goharbor.io
+      chart:          harbor
+      targetRevision: v1.18.1
+      helm:
+          valueFiles:
+            - $values/infra/harbor/helm-values.yml
+    - repoURL:        git@github.com:lunics/argo-cd.git
+      targetRevision: HEAD
+      ref:            values
+      path:           infra/harbor
+
+  destination:
+    server:    https://kubernetes.default.svc
+    namespace: harbor
+
+  project: default
+  syncPolicy:
+    automated:
+      prune:    true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
