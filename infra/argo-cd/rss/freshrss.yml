@@ -2,21 +2,21 @@ kind:       Application
 apiVersion: argoproj.io/v1alpha1
 
 metadata:
-  name:      glance
+  name:      freshrss
   namespace: argo-cd
 
 spec:
   sources:
-    - repoURL:        https://rubxkube.github.io/charts/
-      chart:          glance
-      targetRevision: 0.0.10
+    - repoURL:        https://halkeye.github.io/helm-charts/
+      chart:          freshrss
+      targetRevision: 1.16.2
       helm:
         valueFiles:
-          - $values/rss/glance/helm-values.yml
+          - $values/rss/freshrss/helm-values.yml
     - repoURL:        git@github.com:lunics/argo-cd.git
       targetRevision: HEAD
       ref:            values
-      path:           rss/glance
+      path:           rss/freshrss
 
   destination:
     server:    https://kubernetes.default.svc
@@ -30,3 +30,4 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+

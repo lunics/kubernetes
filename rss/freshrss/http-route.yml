@@ -2,7 +2,7 @@ kind:       HTTPRoute
 apiVersion: gateway.networking.k8s.io/v1
 
 metadata:
-  name:      glance
+  name:      freshrss
   namespace: rss
 
 spec:
@@ -12,9 +12,9 @@ spec:
       sectionName: web
 
   hostnames:
-    - glance.localhost
+    - freshrss.localhost
 
   rules:
     - backendRefs:
-        - name: glance
-          port: 8080
+        - name: freshrss
+          port: 80
