@@ -16,7 +16,6 @@ spec:
     - repoURL:        git@github.com:lunics/argo-cd.git
       targetRevision: HEAD
       ref:            values
-      path:           infra/harbor
 
   destination:
     server:    https://kubernetes.default.svc

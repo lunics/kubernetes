@@ -2,29 +2,27 @@ kind:       Application
 apiVersion: argoproj.io/v1alpha1
 
 metadata:
-  name:      forgejo
+  name:      jellyfin
   namespace: argo-cd
 
 spec:
   sources:
-      # only distributed via Git
-    - repoURL:        https://codeberg.org/forgejo-contrib/forgejo-helm.git
-      targetRevision: main
-      path:           .
-      # chart:          forgejo
-      # targetRevision: 15.0.3
+    - repoURL:        https://jellyfin.github.io/jellyfin-helm
+      chart:          jellyfin
+      targetRevision: 2.7.0
       helm:
-          valueFiles:
-            - $values/infra/forgejo/helm-values.yml
+        valueFiles:
+          - $values/media/jellyfin/helm-values.yml
     - repoURL:        git@github.com:lunics/argo-cd.git
       targetRevision: HEAD
       ref:            values
 
   destination:
     server:    https://kubernetes.default.svc
-    namespace: forgejo
+    namespace: media
 
   project: default
+
   syncPolicy:
     automated:
       prune:    true

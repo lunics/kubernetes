@@ -12,15 +12,15 @@ spec:
       targetRevision: 8.2.4
       helm:
         valueFiles:
-          - $values/homer/helm-values.yml
+          - $values/homepage/homer/helm-values.yml
     - repoURL:        git@github.com:lunics/argo-cd.git
       targetRevision: HEAD
       ref:            values
-      path:           homer
+      path:           homepage/homer
 
   destination:
     server:    https://kubernetes.default.svc
-    namespace: homer
+    namespace: homepage
   
   project: default
 
