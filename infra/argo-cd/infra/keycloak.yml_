@@ -1,0 +1,32 @@
+kind:       Application
+apiVersion: argoproj.io/v1alpha1
+
+metadata:
+  name:      keycloak
+  namespace: argo-cd
+
+spec:
+  sources:
+    - repoURL:        https://charts.bitnami.com/bitnami
+      chart:          keycloak
+      targetRevision: 25.2.0
+      helm:
+          valueFiles:
+            - $values/infra/keycloak/helm-values.yml
+    - repoURL:        git@github.com:lunics/argo-cd.git
+      targetRevision: HEAD
+      ref:            values
+      path:           infra/keycloak
+
+  destination:
+    server:    https://kubernetes.default.svc
+    namespace: authentication
+
+  project: default
+  syncPolicy:
+    automated:
+      prune:    true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+
