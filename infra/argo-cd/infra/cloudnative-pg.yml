@@ -1,0 +1,31 @@
+kind:       Application
+apiVersion: argoproj.io/v1alpha1
+
+metadata:
+  name:      cloudnative-pg
+  namespace: argo-cd
+
+spec:
+  sources:
+    - repoURL:        https://cloudnative-pg.io/charts/
+      chart:          cloudnative-pg
+      targetRevision: 0.27.0
+      helm:
+          valueFiles:
+            - $values/infra/cloudnative-ng/helm-values.yml
+    - repoURL:        git@github.com:lunics/argo-cd.git
+      targetRevision: HEAD
+      ref:            values
+
+  destination:
+    server:    https://kubernetes.default.svc
+    namespace: cnpg-cloudnative-pg    # cnpg-system if k apply -f, cnpg-controller-manager if cnpg plugin install
+
+  project: default
+  syncPolicy:
+    automated:
+      prune:    true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true    # metadata.annotations: Too long on CustomResourceDefinition.apiextensions.k8s.io
