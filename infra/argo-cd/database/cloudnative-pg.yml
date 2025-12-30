@@ -12,7 +12,7 @@ spec:
       targetRevision: 0.27.0
       helm:
           valueFiles:
-            - $values/infra/cloudnative-ng/helm-values.yml
+            - $values/database/cloudnative-ng/helm-values.yml
     - repoURL:        git@github.com:lunics/argo-cd.git
       targetRevision: HEAD
       ref:            values

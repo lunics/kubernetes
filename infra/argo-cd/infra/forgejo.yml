@@ -14,8 +14,8 @@ spec:
       # chart:          forgejo
       # targetRevision: 15.0.3
       helm:
-          valueFiles:
-            - $values/infra/forgejo/helm-values.yml
+        valueFiles:
+          - $values/infra/forgejo/helm-values.yml
     - repoURL:        git@github.com:lunics/argo-cd.git
       targetRevision: HEAD
       ref:            values
