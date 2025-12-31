@@ -1,0 +1,19 @@
+kind:       Cluster
+apiVersion: postgresql.cnpg.io/v1
+
+metadata:
+  name:      cluster-db-netmaker
+  namespace: vpn-netmaker
+
+spec:
+  instances: 1
+  
+  storage:
+    size: 500Mi
+  
+  bootstrap:
+    initdb:
+      database: netmaker
+      owner:    netmaker
+      secret:
+        name: secret-db-netmaker

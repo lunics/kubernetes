@@ -1,0 +1,20 @@
+kind:       HTTPRoute
+apiVersion: gateway.networking.k8s.io/v1
+
+metadata:
+  name:      netmaker
+  namespace: vpn-netmaker
+
+spec:
+  parentRefs:
+    - name:        traefik-gateway
+      namespace:   traefik
+      sectionName: web
+
+  hostnames:
+    - netmaker.localhost
+
+  rules:
+    - backendRefs:
+        - name: netmaker-ui
+          port: 80

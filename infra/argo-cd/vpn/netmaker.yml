@@ -1,0 +1,31 @@
+kind:       Application
+apiVersion: argoproj.io/v1alpha1
+
+metadata:
+  name:      netmaker
+  namespace: argo-cd
+
+spec:
+  sources:
+    - repoURL:        https://gravitl.github.io/netmaker-helm/
+      chart:          netmaker
+      targetRevision: 1.2.0
+      helm:
+        valueFiles:
+          - $values/vpn/netmaker/helm-values.yml
+    - repoURL:        git@github.com:lunics/argo-cd.git
+      targetRevision: HEAD
+      ref:            values
+      path:           vpn/netmaker
+
+  destination:
+    server:    https://kubernetes.default.svc
+    namespace: vpn-netmaker
+
+  project: default
+  syncPolicy:
+    automated:
+      prune:    true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
