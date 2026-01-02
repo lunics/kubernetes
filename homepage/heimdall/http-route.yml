@@ -1,0 +1,20 @@
+kind:       HTTPRoute
+apiVersion: gateway.networking.k8s.io/v1
+
+metadata:
+  name:      heimdall
+  namespace: homepage
+
+spec:
+  parentRefs:
+    - name:        traefik-gateway
+      namespace:   traefik
+      sectionName: web
+
+  hostnames:
+    - heimdall.localhost
+
+  rules:
+    - backendRefs:
+        - name: heimdall
+          port: 3000
