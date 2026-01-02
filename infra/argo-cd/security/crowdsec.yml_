@@ -1,0 +1,32 @@
+kind:       Application
+apiVersion: argoproj.io/v1alpha1
+
+metadata:
+  name:      crowdsec
+  namespace: argo-cd
+
+spec:
+  sources:
+    - repoURL:        https://crowdsecurity.github.io/helm-charts
+      chart:          crowdsec
+      targetRevision: 0.21.0
+      helm:
+        valueFiles:
+          - $values/security/crowdsec/helm-values.yml
+    - repoURL:        git@github.com:lunics/argo-cd.git
+      targetRevision: HEAD
+      ref:            values
+      path:           security/crowdsec
+
+  destination:
+    server:    https://kubernetes.default.svc
+    namespace: security
+
+  project: default
+
+  syncPolicy:
+    automated:
+      prune:    true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
