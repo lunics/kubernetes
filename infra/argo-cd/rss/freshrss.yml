@@ -20,7 +20,7 @@ spec:
 
   destination:
     server:    https://kubernetes.default.svc
-    namespace: rss
+    namespace: rss-freshrss
   
   project: default
 
@@ -30,4 +30,3 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-
