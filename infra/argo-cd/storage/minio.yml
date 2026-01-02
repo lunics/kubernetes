@@ -1,0 +1,31 @@
+kind:       Application
+apiVersion: argoproj.io/v1alpha1
+
+metadata:
+  name:      minio
+  namespace: argo-cd
+
+spec:
+  sources:
+    - repoURL:        https://charts.min.io
+      chart:          minio
+      targetRevision: 5.4.0
+      helm:
+        valueFiles:
+          - $values/storage/minio/helm-values.yml
+    - repoURL:        git@github.com:lunics/argo-cd.git
+      targetRevision: HEAD
+      ref:            values
+      path:           storage/minio   
+
+  destination:
+    server:    https://kubernetes.default.svc
+    namespace: storage-minio
+
+  project: default
+  syncPolicy:
+    automated:
+      prune:    true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
