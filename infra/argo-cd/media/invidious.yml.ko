@@ -1,0 +1,32 @@
+kind:       Application
+apiVersion: argoproj.io/v1alpha1
+
+metadata:
+  name:      invidious
+  namespace: argo-cd
+
+spec:
+  sources:
+    - repoURL:        https://charts-helm.invidious.io
+      chart:          invidious
+      targetRevision: 2.3.0   # chart app v2.20240427, latest v2.20250913
+      # helm:
+      #   valueFiles:
+      #     - $values/media/piped/helm-values.yml
+    # - repoURL:        git@github.com:lunics/argo-cd.git
+      # targetRevision: HEAD
+      # ref:            values
+      # path:           media/piped   
+
+  destination:
+    server:    https://kubernetes.default.svc
+    namespace: media-invidious
+
+  project: default
+
+  syncPolicy:
+    automated:
+      prune:    true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
