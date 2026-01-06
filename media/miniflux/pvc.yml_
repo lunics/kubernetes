@@ -1,0 +1,15 @@
+kind:       PersistentVolumeClaim
+apiVersion: v1
+
+metadata:
+  name:      pvc-miniflux
+  namespace: rss-miniflux
+
+spec:
+  storageClassName: synology-iscsi-storage
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+  volumeMode: Filesystem

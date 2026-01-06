@@ -1,0 +1,32 @@
+kind:       Cluster
+apiVersion: postgresql.cnpg.io/v1
+
+metadata:
+  name:      cluster-db
+  namespace: rss-miniflux
+
+spec:
+  instances: 1
+  
+  storage:
+    size: 2Gi
+    storageClass: sc-pv-db
+  
+  bootstrap:
+    initdb:
+      database: miniflux
+      owner:    miniflux
+
+  managed:
+    roles:
+      - name:       miniflux
+        createdb:   true
+        login:      true
+        comment:    miniflux user
+        superuser:  false
+        createrole: false
+        inRoles:
+          - pg_monitor
+          - pg_signal_backend
+        passwordSecret:
+          name: secret-db

@@ -1,0 +1,25 @@
+kind:       Application
+apiVersion: argoproj.io/v1alpha1
+
+metadata:
+  name:      miniflux
+  namespace: argo-cd
+
+spec:
+  sources:
+    - repoURL:        git@github.com:lunics/argo-cd.git
+      targetRevision: HEAD
+      path:           media/miniflux
+
+  destination:
+    server:    https://kubernetes.default.svc
+    namespace: rss-miniflux
+
+  project: default
+
+  syncPolicy:
+    automated:
+      prune:    true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

@@ -1,0 +1,20 @@
+kind:       PersistentVolume
+apiVersion: v1
+
+metadata:
+  name:      pv-db
+  namespace: rss-miniflux
+
+spec:
+  capacity:
+    storage: 2Gi
+
+  accessModes:
+    - ReadWriteOnce
+
+  hostPath:
+    path: /tmp/kube/miniflux
+
+  storageClassName: sc-pv-db
+
+  persistentVolumeReclaimPolicy: Delete
