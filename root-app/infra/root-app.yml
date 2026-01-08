@@ -4,16 +4,12 @@ apiVersion: argoproj.io/v1alpha1
 metadata:
   name:      root-app
   namespace: argo-cd
-  finalizers:
-    # ensures that app is not deleted until it is not referenced by any application
-    # to delete the resources the app manages, perform a cascading delete
-    - resources-finalizer.argocd.argoproj.io      
 
 spec:
   source:
     repoURL:        git@github.com:lunics/argo-cd.git
     targetRevision: HEAD
-    path:           infra/argo-cd
+    path:           root-app
     directory:
       recurse: true
 
@@ -27,5 +23,3 @@ spec:
     automated:
       prune:    true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
