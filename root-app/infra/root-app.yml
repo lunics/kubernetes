@@ -7,7 +7,7 @@ metadata:
 
 spec:
   source:
-    repoURL:        git@github.com:lunics/argo-cd.git
+    repoURL:        git@github.com:lunics/kubernetes
     targetRevision: HEAD
     path:           root-app
     directory:
