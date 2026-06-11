@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind:       ApplicationSet
+metadata:
+  name: applications
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - list:
+        elements:
+          - name: sonarr
+  template:
+    metadata:
+      name: "{{ .name }}"
+    spec:
+      project: default
+      source:
+        repoURL:        git@github.com:lunics/kubernetes
+        targetRevision: HEAD
+        path:           "{{ .name }}"
+      destination:
+        name:      in-cluster
+        namespace: '{{ default .name (dig "namespace" "" .) }}'
+      syncPolicy:
+        automated:
+          prune:    true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true

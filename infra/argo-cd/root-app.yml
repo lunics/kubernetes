@@ -1,24 +1,19 @@
-kind:       Application
 apiVersion: argoproj.io/v1alpha1
-
+kind:       Application
 metadata:
   name:      root-app
   namespace: argo-cd
-
 spec:
   source:
     repoURL:        git@github.com:lunics/kubernetes
     targetRevision: HEAD
-    path:           root-app
+    path:           infra/argo-cd/
     directory:
       recurse: true
-
   destination:
-    server:    https://kubernetes.default.svc
+    name:      in-cluster
     namespace: argo-cd
-
   project: default
-
   syncPolicy:
     automated:
       prune:    true
