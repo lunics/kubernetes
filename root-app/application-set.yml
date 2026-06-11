@@ -9,7 +9,12 @@ spec:
     - list:
         elements:
           - name: traefik
-            # ServerSideApply=true
+            serverSideApply: true
+          - name: gateway-api
+            repoURL: https://github.com/kubernetes-sigs/gateway-api.git
+            path: config/crd/experimental
+            namespace: kube-system
+            serverSideApply: true
           - name: sonarr
   template:
     metadata:
@@ -17,9 +22,9 @@ spec:
     spec:
       project: default
       source:
-        repoURL:        git@github.com:lunics/kubernetes
-        targetRevision: HEAD
-        path:           "{{ .name }}"
+        repoURL:        '{{ dig "repoURL"        "git@github.com:lunics/kubernetes" . }}'
+        targetRevision: '{{ dig "targetRevision" "HEAD"                             . }}'
+        path:           '{{ dig "path"           .name                              . }}'
       destination:
         name:      in-cluster
         namespace: '{{ default .name (dig "namespace" "" .) }}'
