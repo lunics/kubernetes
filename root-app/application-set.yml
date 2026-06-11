@@ -16,6 +16,9 @@ spec:
             path:            config/crd/standard
             namespace:       kube-system
             serverSideApply: true
+          - name:            cloudnative-pg
+            namespace:       cnpg-system
+            serverSideApply: true
           - name:            sonarr
   template:
     metadata:

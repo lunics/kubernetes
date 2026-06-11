@@ -1,0 +1,9 @@
+apiVersion:  v2
+name:        cnpg
+description: platform to manage PostgreSQL within Kubernetes
+type:        application
+version:     0.1.0
+dependencies:
+  - name:       cloudnative-pg
+    repository: https://cloudnative-pg.io/charts/
+    version:    0.28.2
