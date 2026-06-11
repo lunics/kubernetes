@@ -5,31 +5,4 @@ version:     0.1.0
 dependencies:
   - name:       traefik
     repository: https://traefik.github.io/charts
-    version:    38.0.0
-
-spec:
-  sources:
-    - repoURL:        https://traefik.github.io/charts
-      chart:          traefik
-      targetRevision: 38.0.0
-      helm:
-        valueFiles:
-          - $values/infra/traefik/helm-values.yml
-    - repoURL:        git@github.com:lunics/argo-cd.git
-      targetRevision: HEAD
-      ref:            values
-      path:           infra/traefik
-
-  destination:
-    server:    https://kubernetes.default.svc
-    namespace: traefik
-  
-  project: default
-
-  syncPolicy:
-    automated:
-      prune:    true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
-
+    version:    40.3.0
