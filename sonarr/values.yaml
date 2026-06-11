@@ -1,0 +1,47 @@
+app-template:
+  controllers:
+    sonarr:
+      type: deployment
+      strategy: Recreate
+      annotations:
+        reloader.stakater.com/auto: "true"
+      pod:
+        annotations:
+          backup.velero.io/backup-volumes-excludes: data
+        affinity:
+          podAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              - labelSelector:
+                  matchExpressions:
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values:
+                        - "{{ .Release.Name }}"
+                topologyKey: kubernetes.io/hostname
+      containers:
+        sonarr:
+          image:
+            repository: lscr.io/linuxserver/sonarr
+            tag: 4.0.17.2952-ls313@sha256:0b3f344388bd7bed4f2f770058de795e76447e4a481b83c8d5f8fed489371fde
+          env:
+            TZ: Europe/Paris
+            PUID: 1000
+            PGID: 1000
+          ports:
+            - name: http
+              containerPort: 8989
+          probes:
+            liveness:
+              enabled: true
+              custom: true
+              spec:
+                httpGet:
+                  port: http
+                  path: /ping
+            readiness:
+              enabled: true
+              custom: true
+              spec:
+                httpGet:
+                  port: http
+                  path: /ping
