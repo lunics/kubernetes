@@ -8,14 +8,15 @@ spec:
   generators:
     - list:
         elements:
-          - name: traefik
+          - name:            traefik
             serverSideApply: true
-          - name: gateway-api
-            repoURL: https://github.com/kubernetes-sigs/gateway-api.git
-            path: config/crd/experimental
-            namespace: kube-system
+          - name:            gateway-api
+            repoURL:         https://github.com/kubernetes-sigs/gateway-api.git
+            targetRevision:  v1.5.1
+            path:            config/crd/experimental
+            namespace:       kube-system
             serverSideApply: true
-          - name: sonarr
+          - name:            sonarr
   template:
     metadata:
       name: "{{ .name }}"
