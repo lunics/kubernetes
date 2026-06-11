@@ -1,8 +1,8 @@
-apiVersion: v2
-name: sonarr
+apiVersion:  v2
+name:        sonarr
 description: Sonarr
-type: application
-version: 0.1.0
+type:        application
+version:     0.1.0
 dependencies:
   - name:       sonarr
     repository: https://charts.pree.dev
