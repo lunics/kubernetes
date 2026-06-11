@@ -13,7 +13,7 @@ spec:
           - name:            gateway-api
             repoURL:         https://github.com/kubernetes-sigs/gateway-api.git
             targetRevision:  v1.5.1
-            path:            config/crd/experimental
+            path:            config/crd/standard
             namespace:       kube-system
             serverSideApply: true
           - name:            sonarr
