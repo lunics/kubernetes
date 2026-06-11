@@ -4,6 +4,6 @@ description: Sonarr
 type: application
 version: 0.1.0
 dependencies:
-  - name:       app-template
+  - name:       sonarr
     repository: https://charts.pree.dev
     version:    1.11.0
