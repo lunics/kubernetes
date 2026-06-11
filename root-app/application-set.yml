@@ -8,6 +8,8 @@ spec:
   generators:
     - list:
         elements:
+          - name: traefik
+            # ServerSideApply=true
           - name: sonarr
   template:
     metadata:
