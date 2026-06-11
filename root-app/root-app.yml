@@ -7,7 +7,7 @@ spec:
   source:
     repoURL:        git@github.com:lunics/kubernetes
     targetRevision: HEAD
-    path:           infra/argo-cd/
+    path:           root-app/
     directory:
       recurse: true
   destination:
