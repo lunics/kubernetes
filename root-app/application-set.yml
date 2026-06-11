@@ -20,6 +20,7 @@ spec:
             namespace:       cnpg-system
             serverSideApply: true
           - name:            sonarr
+          - name:            minecraft
   template:
     metadata:
       name: "{{ .name }}"
