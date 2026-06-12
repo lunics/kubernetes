@@ -1,23 +1,6 @@
 app-template:
   controllers:
     sonarr:
-      type: deployment
-      strategy: Recreate
-      annotations:
-        reloader.stakater.com/auto: "true"
-      pod:
-        annotations:
-          backup.velero.io/backup-volumes-excludes: data
-        affinity:
-          podAffinity:
-            requiredDuringSchedulingIgnoredDuringExecution:
-              - labelSelector:
-                  matchExpressions:
-                    - key: app.kubernetes.io/name
-                      operator: In
-                      values:
-                        - "{{ .Release.Name }}"
-                topologyKey: kubernetes.io/hostname
       containers:
         sonarr:
           image:
@@ -45,3 +28,10 @@ app-template:
                 httpGet:
                   port: http
                   path: /ping
+  service:
+    sonarr:
+      controller: sonarr
+      type: ClusterIP
+      ports:
+        http:
+          port: 8989
