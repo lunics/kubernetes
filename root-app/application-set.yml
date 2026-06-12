@@ -8,6 +8,7 @@ spec:
   generators:
     - list:
         elements:
+          - name:            openbao
           - name:            traefik
             serverSideApply: true
           - name:            gateway-api
