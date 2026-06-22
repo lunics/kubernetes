@@ -48,7 +48,7 @@ traefik:
   providers:
     kubernetesGateway:
       enabled: true
-      experimentalChannel: true
+      experimentalChannel: false    # gateway-api standard version installed
     kubernetesIngress:
       enabled: false
   
