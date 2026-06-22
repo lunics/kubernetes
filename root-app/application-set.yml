@@ -9,6 +9,7 @@ spec:
     - list:
         elements:
           - name:            openbao
+          - name:            cert-manager
           - name:            traefik
             serverSideApply: true
           - name:            gateway-api
