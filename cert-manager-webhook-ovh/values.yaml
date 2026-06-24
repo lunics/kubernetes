@@ -1,0 +1,105 @@
+groupName: acme.lunics.cloud
+
+certManager:
+  namespace: cert-manager
+  serviceAccountName: cert-manager
+
+issuers:
+  - name: letsencrypt-staging
+    create: true
+    kind: ClusterIssuer
+    acmeServerUrl: https://acme-staging-v02.api.letsencrypt.org/directory
+    email: acme-letsencrypt.cloud@example.net
+
+    # -- Enables or disables generating a new ACME account key.
+    # If `true`, the Issuer resource will not request a new account but will expect the account key to be supplied via an existing secret.
+    # If `false`, the cert-manager system will generate a new ACME account key for the Issuer.
+    # Defaults to `false` when unspecified.
+    # See https://cert-manager.io/docs/reference/api-docs/#acme.cert-manager.io/v1.ACMEIssuer
+    disableAccountKeyGeneration: false
+
+    profile: tlsserver
+
+    # -- Follow CNAME records or not. 2 options:
+    # - `None` (default): Don't follow CNAME records
+    # - `Follow`: Follow CNAME records
+    # See https://cert-manager.io/docs/configuration/acme/dns01/#delegated-domains-for-dns01 for more information.
+    cnameStrategy: ''
+
+    # The endpoint name of the OVH API. It must be one of the following:
+    # `ovh-eu`, `ovh-ca`, `kimsufi-eu`, `kimsufi-ca`, `soyoustart-eu`, `soyoustart-ca`, `runabove-ca`.
+    ovhEndpointName: ovh-eu
+
+    # application, oauth2
+    ovhAuthenticationMethod: application
+
+    ovhAuthentication:
+      # -- The OVH application key. Leave empty if you are using an existing secret.
+      applicationKey: ''
+      # -- The OVH application secret. Leave empty if you are using an existing secret.
+      applicationSecret: ''
+      # -- Your OVH consumer key. Leave empty if you are using an existing secret.
+      applicationConsumerKey: ''
+
+    ovhAuthenticationRef:
+      # -- The secret reference to an existing OVH application key.
+      applicationKeyRef:
+
+        # Name of the Kubernetes secret containing the OVH Application Key
+        # This secret must be in the same namespace as this chart is deployed into.
+        # See https://github.com/aureq/cert-manager-webhook-ovh/issues/82 for more information.
+        name: ''
+
+        # The required key name in the secret above that holds the actual OVH application key value
+        key: applicationKey
+
+      # @schema
+      # type: object
+      # @schema
+      # -- The secret reference to an existing OVH application secret.
+      applicationSecretRef:
+
+        # @schema
+        # required: true
+        # type: string
+        # @schema
+        # -- Name of the Kubernetes secret containing the OVH Application Secret
+        # This secret must be in the same namespace as this chart is deployed into.
+        # See https://github.com/aureq/cert-manager-webhook-ovh/issues/82 for more information.
+        name: ''
+
+        # @schema
+        # required: true
+        # type: string
+        # default: applicationSecret
+        # @schema
+        # -- The key name in the secret above that holds the actual OVH application secret value
+        key: applicationSecret
+
+      # @schema
+      # type: object
+      # @schema
+      # -- The secret reference to an existing OVH consumer key
+      applicationConsumerKeyRef:
+
+        # @schema
+        # required: true
+        # type: string
+        # @schema
+        # -- Name of the Kubernetes secret containing the OVH consumer Key
+        # This secret must be in the same namespace as this chart is deployed into.
+        # See https://github.com/aureq/cert-manager-webhook-ovh/issues/82 for more information.
+        name: ''
+
+        # @schema
+        # required: true
+        # type: string
+        # default: applicationConsumerKey
+        # @schema
+        # -- The key name in the secret above that holds the actual OVH consumer key value
+        key: applicationConsumerKey
+
+  - name: letsencrypt-staging
+    create: true
+    acmeServerUrl: https://acme-v02.api.letsencrypt.org/directory
+    profile: tlsserver
