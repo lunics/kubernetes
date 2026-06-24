@@ -10,7 +10,7 @@ spec:
         elements:
           - name:            openbao
           - name:            cert-manager
-          - name:            cert-manager-webhook-ovh
+          # - name:            cert-manager-webhook-ovh
           - name:            traefik
             serverSideApply: true
           - name:            gateway-api
