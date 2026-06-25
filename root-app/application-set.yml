@@ -9,6 +9,8 @@ spec:
     - list:
         elements:
           - name:            openbao
+          - name:            external-secrets
+            serverSideApply: true
           - name:            cert-manager
           # - name:            cert-manager-webhook-ovh
           - name:            traefik
