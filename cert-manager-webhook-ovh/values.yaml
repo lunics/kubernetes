@@ -44,62 +44,45 @@ issuers:
     ovhAuthenticationRef:
       # -- The secret reference to an existing OVH application key.
       applicationKeyRef:
-
         # Name of the Kubernetes secret containing the OVH Application Key
         # This secret must be in the same namespace as this chart is deployed into.
-        # See https://github.com/aureq/cert-manager-webhook-ovh/issues/82 for more information.
-        name: ''
-
+        name: ovh-authentication
         # The required key name in the secret above that holds the actual OVH application key value
         key: applicationKey
 
-      # @schema
-      # type: object
-      # @schema
       # -- The secret reference to an existing OVH application secret.
       applicationSecretRef:
-
-        # @schema
-        # required: true
-        # type: string
-        # @schema
-        # -- Name of the Kubernetes secret containing the OVH Application Secret
+        # Name of the Kubernetes secret containing the OVH Application Secret
         # This secret must be in the same namespace as this chart is deployed into.
-        # See https://github.com/aureq/cert-manager-webhook-ovh/issues/82 for more information.
-        name: ''
-
-        # @schema
-        # required: true
-        # type: string
-        # default: applicationSecret
-        # @schema
+        name: ovh-authentication
         # -- The key name in the secret above that holds the actual OVH application secret value
         key: applicationSecret
 
-      # @schema
-      # type: object
-      # @schema
-      # -- The secret reference to an existing OVH consumer key
+      # The secret reference to an existing OVH consumer key
       applicationConsumerKeyRef:
-
-        # @schema
-        # required: true
-        # type: string
-        # @schema
-        # -- Name of the Kubernetes secret containing the OVH consumer Key
+        # Name of the Kubernetes secret containing the OVH consumer Key
         # This secret must be in the same namespace as this chart is deployed into.
         # See https://github.com/aureq/cert-manager-webhook-ovh/issues/82 for more information.
-        name: ''
-
-        # @schema
-        # required: true
-        # type: string
-        # default: applicationConsumerKey
-        # @schema
-        # -- The key name in the secret above that holds the actual OVH consumer key value
+        name: ovh-authentication
+        # The key name in the secret above that holds the actual OVH consumer key value
         key: applicationConsumerKey
 
-  - name: letsencrypt-staging
-    create: true
-    acmeServerUrl: https://acme-v02.api.letsencrypt.org/directory
-    profile: tlsserver
+  # - name: letsencrypt-prod
+  #   create: true
+  #   acmeServerUrl: https://acme-v02.api.letsencrypt.org/directory
+  #   profile: tlsserver
+  #   disableAccountKeyGeneration: false
+  #   profile: tlsserver
+  #   cnameStrategy: ''
+  #   ovhEndpointName: ovh-eu
+  #   ovhAuthenticationMethod: application
+  #   ovhAuthenticationRef:
+  #     applicationKeyRef:
+  #       name: ovh-authentication
+  #       key:  applicationKey
+  #     applicationSecretRef:
+  #       name: ovh-authentication
+  #       key:  applicationSecret
+  #     applicationConsumerKeyRef:
+  #       name: ovh-authentication
+  #       key:  applicationConsumerKey
