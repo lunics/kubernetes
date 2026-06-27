@@ -67,22 +67,22 @@ issuers:
         # The key name in the secret above that holds the actual OVH consumer key value
         key: applicationConsumerKey
 
-  # - name: letsencrypt-prod
-  #   create: true
-  #   acmeServerUrl: https://acme-v02.api.letsencrypt.org/directory
-  #   profile: tlsserver
-  #   disableAccountKeyGeneration: false
-  #   profile: tlsserver
-  #   cnameStrategy: ''
-  #   ovhEndpointName: ovh-eu
-  #   ovhAuthenticationMethod: application
-  #   ovhAuthenticationRef:
-  #     applicationKeyRef:
-  #       name: ovh-authentication
-  #       key:  applicationKey
-  #     applicationSecretRef:
-  #       name: ovh-authentication
-  #       key:  applicationSecret
-  #     applicationConsumerKeyRef:
-  #       name: ovh-authentication
-  #       key:  applicationConsumerKey
+  - name: letsencrypt-prod
+    create: true
+    acmeServerUrl: https://acme-v02.api.letsencrypt.org/directory
+    profile: tlsserver
+    disableAccountKeyGeneration: false
+    profile: tlsserver
+    cnameStrategy: ''
+    ovhEndpointName: ovh-eu
+    ovhAuthenticationMethod: application
+    ovhAuthenticationRef:
+      applicationKeyRef:
+        name: ovh-authentication
+        key:  applicationKey
+      applicationSecretRef:
+        name: ovh-authentication
+        key:  applicationSecret
+      applicationConsumerKeyRef:
+        name: ovh-authentication
+        key:  applicationConsumerKey
