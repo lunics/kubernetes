@@ -5,5 +5,5 @@ type:        application
 version:     0.1.0
 dependencies:
   - name:       cert-manager-webhook-ovh
-    repository: https://aureq.github.io
+    repository: https://aureq.github.io/cert-manager-webhook-ovh/
     version:    0.9.13
