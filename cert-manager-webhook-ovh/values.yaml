@@ -70,7 +70,6 @@ issuers:
   - name: letsencrypt-prod
     create: true
     acmeServerUrl: https://acme-v02.api.letsencrypt.org/directory
-    profile: tlsserver
     disableAccountKeyGeneration: false
     profile: tlsserver
     cnameStrategy: ''
