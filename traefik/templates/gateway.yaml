@@ -3,22 +3,26 @@ apiVersion: gateway.networking.k8s.io/v1
 metadata:
   name:      traefik-gateway
   namespace: traefik
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-staging
 spec:
   gatewayClassName: traefik
   listeners:
     - name:     web    # entry point name
+      hostname: traefik.lunics.cloud
       port:     80
       protocol: HTTP
       allowedRoutes:
         namespaces:
           from: All
     - name:     websecure
+      hostname: traefik.lunics.cloud
       port:     443
       protocol: HTTPS
       tls:
         mode: Terminate
         certificateRefs:
-          - name:      secret-selfsigned-tls
+          - name:      traefik-lunics-cloud
             namespace: traefik
             group:     ""
             kind:      Secret
