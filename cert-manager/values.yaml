@@ -7,3 +7,5 @@ cert-manager:
     enabled: false
     servicemonitor:
       enabled: false
+  config:
+    enableGatewayAPI: true
