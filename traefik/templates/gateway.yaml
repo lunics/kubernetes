@@ -24,6 +24,8 @@ spec:
         certificateRefs:
           - name:      traefik-lunics-cloud
             namespace: traefik
+            group:     ''
+            kind:      Secret
       allowedRoutes:
         namespaces:
           from: All
