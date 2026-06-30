@@ -13,6 +13,7 @@ spec:
             serverSideApply: true
           - name:            cert-manager
           - name:            cert-manager-webhook-ovh
+            namespace:       cert-manager
           - name:            traefik
             serverSideApply: true
           - name:            gateway-api
