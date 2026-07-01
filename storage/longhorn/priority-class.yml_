@@ -1,9 +1,0 @@
-kind:       PriorityClass
-apiVersion: scheduling.k8s.io/v1
-
-metadata:
-  name: longhorn-critical
-
-value:         1000000000
-globalDefault: false
-description:   "Used for Longhorn system components"
