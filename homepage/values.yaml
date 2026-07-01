@@ -16,6 +16,9 @@ homepage:
         - name:        traefik-gateway
           namespace:   traefik
           sectionName: web
+        - name:        traefik-gateway
+          namespace:   traefik
+          sectionName: websecure
       hostnames:
         - homepage.lunics.cloud
       additionalRules: []
