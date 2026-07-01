@@ -28,6 +28,7 @@ spec:
           - name:            homepage
           - name:            sonarr
           - name:            minecraft
+          - name:            forgejo
   template:
     metadata:
       name: "{{ .name }}"
