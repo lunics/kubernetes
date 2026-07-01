@@ -1,0 +1,20 @@
+openbao:
+  server:
+    gateway:
+      # WARNING: Terminating TLS before reaching the OpenBao Server is not recommended and may break things like certificate authentication. Prefer usage of `TLSRoute`.
+      httpRoute:
+        enabled: true
+        hosts:
+          - openbao.lunics.cloud
+        activeService: true
+        parentRefs:
+          - name:        traefik-gateway
+            namespace:   traefik
+            sectionName: web
+          - name:        traefik-gateway
+            namespace:   traefik
+            sectionName: websecure
+        matches:
+          path:
+            type: PathPrefix
+            value: '/'
