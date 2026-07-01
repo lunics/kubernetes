@@ -2,7 +2,8 @@ homepage:
   config:
     # -- List of allowed hosts (sometimes with the port) that can host your homepage install
     # -- see https://gethomepage.dev/installation/#homepage_allowed_hosts
-    allowedHosts: []
+    allowedHosts: 
+      - homepage.lunics.cloud
   
   route:
     main:
