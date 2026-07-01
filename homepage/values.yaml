@@ -8,10 +8,7 @@ homepage:
   route:
     main:
       enabled: true
-      apiVersion: gateway.networking.k8s.io/v1
       kind: HTTPRoute
-      annotations: {}
-      labels: {}
       parentRefs:
         - name:        traefik-gateway
           namespace:   traefik
@@ -21,8 +18,6 @@ homepage:
           sectionName: websecure
       hostnames:
         - homepage.lunics.cloud
-      additionalRules: []
-      filters: []
       matches:
         - path:
             type: PathPrefix
