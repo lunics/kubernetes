@@ -49,3 +49,30 @@ app-template:
           sectionName: websecure
       hostnames:
         - sonarr.lunics.cloud
+
+  persistence:
+    sonarr:
+      enabled: true
+      type: persistentVolumeClaim
+      annotations:
+        helm.sh/resource-policy: keep
+        argocd.argoproj.io/sync-options: Delete=false
+      accessMode: ReadWriteOnce
+      size: 1Gi
+      advancedMounts:
+        sonarr:
+          sonarr:
+            - path: /config
+
+    data:
+      enabled: true
+      type: persistentVolumeClaim
+      accessMode: ReadWriteOnce
+      size: 1Gi
+      annotations:
+        helm.sh/resource-policy: keep
+        argocd.argoproj.io/sync-options: Delete=false
+      advancedMounts:
+        sonarr:
+          sonarr:
+            - path: /data
