@@ -1,0 +1,29 @@
+homepage:
+  config:
+    # -- List of allowed hosts (sometimes with the port) that can host your homepage install
+    # -- see https://gethomepage.dev/installation/#homepage_allowed_hosts
+    allowedHosts: []
+  
+  route:
+    main:
+      enabled: true
+      apiVersion: gateway.networking.k8s.io/v1
+      kind: HTTPRoute
+      annotations: {}
+      labels: {}
+      parentRefs:
+        - name:        traefik-gateway
+          namespace:   traefik
+          sectionName: web
+      hostnames:
+        - homepage.lunics.cloud
+      additionalRules: []
+      filters: []
+      matches:
+        - path:
+            type: PathPrefix
+            value: /
+      # -- To redirect to HTTPS, create a new route object under the main route and enable this option.
+      # This should only be used with HTTP-like routes, such as HTTPRoute or GRPCRoute.
+      # [Reference]( https://gateway-api.sigs.k8s.io/guides/http-redirect-rewrite/ )
+      httpsRedirect: false
