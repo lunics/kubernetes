@@ -35,3 +35,17 @@ app-template:
       ports:
         http:
           port: 8989
+        
+  route:
+    sonarr:
+      enabled: true
+      kind: HTTPRoute
+      parentRefs:
+        - name:        traefik-gateway
+          namespace:   traefik
+          sectionName: web
+        - name:        traefik-gateway
+          namespace:   traefik
+          sectionName: websecure
+      hostnames:
+        - sonarr.lunics.cloud
