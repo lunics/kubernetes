@@ -51,27 +51,27 @@ app-template:
         - sonarr.lunics.cloud
 
   persistence:
-    sonarr:
-      enabled: true
+    config:
       type: persistentVolumeClaim
+      storageClassName: sonarr
+      size: 1Gi
       annotations:
         helm.sh/resource-policy: keep
         argocd.argoproj.io/sync-options: Delete=false
       accessMode: ReadWriteOnce
-      size: 1Gi
       advancedMounts:
         sonarr:
           sonarr:
             - path: /config
 
     data:
-      enabled: true
       type: persistentVolumeClaim
-      accessMode: ReadWriteOnce
+      storageClassName: sonarr
       size: 1Gi
       annotations:
         helm.sh/resource-policy: keep
         argocd.argoproj.io/sync-options: Delete=false
+      accessMode: ReadWriteOnce
       advancedMounts:
         sonarr:
           sonarr:
