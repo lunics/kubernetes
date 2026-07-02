@@ -60,6 +60,7 @@ app-template:
         sonarr:
           sonarr:
             - path: /config
+            - path: /data
 
     # data:
     #   type: persistentVolumeClaim
